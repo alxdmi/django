@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% load static %}
+
+  <title>Happy Birthday Reminder</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+ 
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}">
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+  <div class="top_area"> 
+    <!-- header section -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <span>
+              Happy Birthday Reminder
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Главная <span class="sr-only">(вы здесь)</span></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="#why-us">Почему мы</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#how-it-works"> Как это работает </a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-item nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Выйти
+                  </a>
+                  <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+                    {% csrf_token %}
+                  </form>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'contact' %}"> Оставить заявку </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class=" slider_section position-relative">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="col-lg-10 col-md-11 mx-auto">
+                <div class="detail-box">
+                  <div>
+                    <h1>
+                      Никогда не забывайте про дни рождения!
+                    </h1>
+                    <p>
+                      Мы живем в такое время, что очень просто забыть про дни рождения близких, коллег, друзей. С нашим сервисом это в прошлом!
+                    </p>
+                    <div class="">
+                      <a href="{% url 'contact' %}">
+                        Оставить заявку
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="col-lg-10 col-md-11 mx-auto">
+                <div class="detail-box">
+                  <div>
+                    <h1>
+                      Используйте новые технологии!
+                    </h1>
+                    <p>
+                      Технологии спешат к вам на помощь в лице нашего сайта - заставьте их работать на вас!
+                    </p>
+                    <div class="">
+                      <a href="{% url 'contact' %}">
+                        Оставить заявку
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="col-lg-10 col-md-11 mx-auto">
+                <div class="detail-box">
+                  <div>
+                    <h1>
+                      Повышайте продажи!
+                    </h1>
+                    <p>
+                      Вы можете повысить продажи, просто создав рассылку с поздравлениями для ваших клиентов. Несложный, но очень действенный жест! 
+                    </p>
+                    <div class="">
+                      <a href="{% url 'contact' %}">
+                        Оставить заявку
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="col-lg-10 col-md-11 mx-auto">
+                <div class="detail-box">
+                  <div>
+                    <h1>
+                      Сделайте приятное коллегам!
+                    </h1>
+                    <p>
+                      Перестаньте создавать гугл-таблички со всеми днями рождениями коллег, или захламлять свой календарь. Доверьтесь нашему сервису!
+                    </p>
+                    <div class="">
+                      <a href="{% url 'contact' %}">
+                        Оставить заявку
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="col-lg-10 col-md-11 mx-auto">
+                <div class="detail-box">
+                  <div>
+                    <h1>
+                      Специальное предложение только для вас!
+                    </h1>
+                    <p>
+                      Оставьте заявку сейчас и получите скидку 15% на наши продукты!
+                    </p>
+                    <div class="">
+                      <a href="{% url 'contact' %}">
+                        Оставить заявку
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        </ol>
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+
+
+  <!-- Us section -->
+
+  <section class="us_section layout_padding" id="why-us">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Почему именно Happy Birthday Reminder?
+        </h2>
+      </div>
+
+      <div class="us_container ">
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="box">
+              <div class="img-box">
+                <img src="{% static 'images/trust.png' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  НАМ МОЖНО ДОВЕРИТЬСЯ
+                </h5>
+                <p>
+                  Мы на рынке уже неделю, обладаем большим опытом и еще большим энтузиазмом.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="box">
+              <div class="img-box">
+                <img src="{% static 'images/technology.png' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  ИСПОЛЬЗУЕМ НОВЫЕ ТЕХНОЛОГИИ
+                </h5>
+                <p>
+                  Все только самое современное, чтобы не упустить важный день рождения.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="box">
+              <div class="img-box">
+                <img src="{% static 'images/clock.png' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  ЭКОНОМИМ ВАШЕ ВРЕМЯ
+                </h5>
+                <p>
+                  Его можно потратить на более полезные вещи, чем записывать дни рождения других в свой календарь.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="box">
+              <div class="img-box">
+                <img src="{% static 'images/maximize.png' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  ОДИН СЕРВИС ДЛЯ ВСЕГО
+                </h5>
+                <p>
+                  Мы уже все предусмотрели: один сайт для знакомых/друзей/коллег. 
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end us section -->
+
+
+  <!-- how it works section -->
+
+  <section class="how-it-works_section layout_padding" id="how-it-works">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <div class="detail-box">
+            <h2>
+              ПРОСТО. БЫСТРО. НАДЕЖНО.
+            </h2>
+            <p>
+              Оставьте заявку на тестирование функции. После того, как мы рассмотрим заявку, вам откроется доступ к форме для заполнения данных. <div class="">
+              <n></n> При необходимости можно добавить компанию, если вы хотите получать напоминания о днях рождения ваших коллег.<div class="">
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        <a href="{% url 'contact' %}">
+          Оставить заявку
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- end how it works section -->
+
+
+  <!-- footer section -->
+  <footer class="container-fluid footer_section">
+    <p>
+      &copy; 2024 Никакие права не защищены.
+    </p>
+  </footer>
+  <!-- footer section -->
+
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>
